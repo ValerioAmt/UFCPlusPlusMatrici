@@ -39,27 +39,29 @@ int main()
         cout << "-";
     }
     cout << endl;
-
     for (int i = 0; i < righe; i++)
     {
-
-        cout << i << "|  ";
-
         for (int j = 0; j < colonne; j++)
         {
-            cout << matrice[i][j] << " ";
+            if (i == j or i + j == 8)
+            {
+                cout << "- ";
+            }
+            else
+            {
+                cout << "1 ";
+            }
         }
         cout << endl;
-        for (int i = 0; i < righe; i++)
-        {
-            matrice[posizioneColonne][posizioneColonne] = 9;
-
-            cout << matrice[posizioneColonne][posizioneColonne] << endl;
-
-            posizioneColonne++;
-        }
     }
 }
+/* for  (int i = 0; i < righe; i ++){
+    matrice[i][i] = colonne;
+     for(int j = 0; j < colonne; j++){
+         cout << matrice[i][i] <<endl;
+     }
+ }
+}*/
 
 // VOI SIETE QUI
 // input matrice, righe, colonne
