@@ -15,10 +15,7 @@ int main()
         for (int j = 0; j < colonne; j++)
         {
             matrice[i][j] = rand() % 10;
-            if ((matrice[i][j] = rand() % 10) < 5)
-            {
-                matrice[i][j] = 0;
-            }
+           
         }
     }
 
@@ -43,16 +40,11 @@ int main()
         for (int j = 0; j < colonne; j++)
         {
             cout << matrice[i][j] << " ";
+        somma += matrice[i][j];
         }
         cout << endl;
     }
-    for (int i = 0; i < righe; i++)
-    {
-        for (int j = 0; j < colonne; j++)
-        {
-            somma += matrice[i][j];
-        }
-    }
+    
     
 
     cout<<"la somma della matrice è: " << somma << endl;
