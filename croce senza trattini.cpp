@@ -27,18 +27,7 @@ int main()
         }
     }
 
-    cout << "   ";
-    for (int i = 0; i < colonne; i++)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    int trattini = colonne * 2 + 4;
-    for (int i = 0; i < trattini; i++)
-    {
-        cout << "-";
-    }
-    cout << endl;
+    
     for (int i = 0; i < righe; i++)
     {
         for (int j = 0; j < colonne; j++)
@@ -51,34 +40,8 @@ int main()
             {
                 cout << "1 ";
             }
+            
         }
         cout << endl;
     }
 }
-/* for  (int i = 0; i < righe; i ++){
-    matrice[i][i] = colonne;
-     for(int j = 0; j < colonne; j++){
-         cout << matrice[i][i] <<endl;
-     }
- }
-}*/
-
-// VOI SIETE QUI
-// input matrice, righe, colonne
-
-// output non ci devono essere i <5
-/*
-    for (int i = 0; i < righe; i++)
-    {
-        for (int y = 0; y < colonne; i++)
-        {
-            if (matrice[i][y] < 5)
-            {
-                matrice[i][y] = 0;
-                cout << matrice[i][y];
-                //(i >= 5 && y >= 5){
-            }
-        }
-    }
-}
-*/

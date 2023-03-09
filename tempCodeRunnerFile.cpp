@@ -1,1 +1,2 @@
-cout << endl;
+ if(j < 4){
+              cout << 
