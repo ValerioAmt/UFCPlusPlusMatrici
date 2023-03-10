@@ -1,13 +1,19 @@
+//
+// Created by Guea on 09/03/23.
+//
+
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    int rows = 10;
-    int columns = 10;
-    string words[] = {"ciao", "word", "apple", "barbabietole", "oshio"};
+    int rows = 18;
+    int columns = 18;
+    string words[] = {"Buongiorno", "ciao", "apple", "mamma", "oshio" };
     char empty = ' ';
+
 
     int wordsLength = sizeof(words) / sizeof(words[0]);
     int contatore = 0;
@@ -24,7 +30,7 @@ int main()
 
     for (int index = 0; index < wordsLength; index++)
     {
-        if (index % 3 == 0)
+        if (index % 10 == 5)
         { // orizzontale
             if (words[index].length() > columns)
             {
@@ -39,30 +45,30 @@ int main()
 
                 while (matrix[x][y] != empty)
                 {
-                    x = random() % rows;                              // row random
-                    y = random() % (columns - words[index].length()); // da riga 36 a riga 43 controlliamo se ce spazio per inserire la parola nella riga
+                    x = random() % rows; // row random
+                    y = random() % (columns - words[index].length());
                 }
 
-                for (int i = 0; i < words[index].length(); i++) // qui controlliamo se le caselle sono occupate
+                for (int i = 0; i < words[index].length(); i++)// controllo se la cella è vuota
                 {
-                    if (matrix[x][y + i] != empty) // se le caselle sono occupate (non sono vuote) scegliamo altri numeri (riga 50,51 e riazzeriamo i=0)
+                    if (matrix[x][y + i] != empty)
                     {
                         x = random() % rows; // row random
                         y = random() % (columns - words[index].length());
                         i = 0;
                     }
-                } // se arriviamo qui abbiamo posizione corretta e caselle libere per inserire parola
+                }
 
-                for (int i = 0; i < words[index].length(); i++)
+                for (int i = 0; i < words[index].length(); i++)// fill the matrix with the word
                 {
-                    matrix[x][y + i] = words[index][i]; // qui assegniamo valori (inseriamo parola)
+                    matrix[x][y + i] = words[index][i];
                     // cout << "index: " << index << " i: " << i << " x: " << x << " y: " << y << endl;
                     // cout << "matrix[" << x << "][" << y + i << "] = " << words[index][i] << endl;
                     // cout << "result: " << matrix[x][y + i] << endl;
                 }
             }
         }
-        else if (index % 3 == 1)
+        else if (index % 10 == 5)
         { // verticale
             if (words[index].length() > rows)
             {
@@ -102,43 +108,54 @@ int main()
         }
         else
         {
-            if (words[index].length() > rows)
-            {
-                cout << "word " << words[index] << " is too long" << endl;
-                continue;
-            }
-            else
-            {
-                contatore++;
-                int x = random() % rows; // troviamo posizione in cui INIZIARE a scrivere parola
-                int y = random() % (columns - words[index].length());
+            { // diagonale sinistra verso in basso a destra
 
-                while (matrix[x][y] != empty)
+                if (words[index].length() > rows)
                 {
-                    x = random() % (columns - words[index].length()); // controlliamo se le posizioni sono libere per inserire parola
-                    y = random() % (rows - words[index].length());
+                    cout << "word " << words[index] << " is too long" << endl;
+                    continue;
+                }
+                else
+                {
+                    contatore++;
+                    int x = random() % (rows - words[index].length());
+                    int y = random() % (columns - words[index].length());
 
-                } // (dove inseriamo primo char della parola da inserire)
-                for (int i = 0; i < words[index].length(); i++)
-                {
-                    if (matrix[x][y + 1] != empty)
+                    while (matrix[x][y] != empty)
                     {
-                        x = random() % (columns - words[index].length());
-                        y = random() % rows;
+                        x = random() % (rows - words[index].length());
+                        y = random() % (columns - words[index].length());
+                    }
+
+                    for (int i = 0; i < words[index].length(); i++)
+                    {
+                        if (matrix[x + i][y + i] != empty)
+                        {
+                            x = random() % (rows - words[index].length());
+                            y = random() % (columns - words[index].length());
+                            i = 0;
+                        }
+                    }
+                    for (int i = 0; i < words[index].length(); i++)
+                         if (matrix[x + i][y + i] != empty)
+                        {
+                            x = random() % (rows - words[index].length());
+                            y = random() % (columns - words[index].length());
+                            i = 0;
+                        }
+
+                    for (int i = 0; i < words[index].length(); i++)
+                    {
+                        matrix[x + i][y + i] = words[index][i];
+                        // cout << "index: " << index << " i: " << i << " x: " << x << " y: " << y << endl;
+                        // cout << "matrix[" << x << "][" << y + i << "] = " << words[index][i] << endl;
+                        // cout << "result: " << matrix[x][y + i] << endl;
                     }
                 }
-                for (int i = 0; i < rows; i++)
-                {
-
-                    matrix[x][y] = words[index][i];
-                }
-
-                // assegnamo valore in diagionale a scendere verso dx
-
-            } // devo ancora impedire di sovrascrivere parole
+            }
+             cout << "diagonale" << endl;
         }
     }
-    // cout << "diagonale" << endl;
 
     // // fill the matrix with random char if empty
     // for (int i = 0; i < rows; i++)
@@ -154,33 +171,30 @@ int main()
 
     cout << "devi trovare " << contatore << " parole" << endl;
 
-    // print
+    // stampo la matrice
     cout << "    ";
     for (int i = 0; i < columns; i++)
     {
-        if (i < 10)
-        {
+        if(i < 10){
             cout << " " << i;
         }
-        else
-        {
+        else{
             cout << " " << i;
         }
+
     }
     cout << endl;
     for (int i = 0; i < rows; i++)
     {
 
-        if (i < 10)
-        {
+        if(i < 10){
             cout << "  " << i << " |";
         }
-        else
-        {
+        else{
             cout << " " << i << " |";
         }
 
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < columns; j++)// stampa la matrice
         {
             cout << matrix[i][j] << " ";
         }

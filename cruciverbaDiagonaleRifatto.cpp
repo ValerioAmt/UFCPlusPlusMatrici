@@ -83,7 +83,7 @@ int main()
 
                 for (int i = 0; i < words[index].length(); i++)
                 {
-                    if (matrix[x + i][y] != empty)
+                    if (matrix[x + i][y + 1] != empty)
                     {
                         x = random() % (rows - words[index].length());
                         y = random() % columns;
@@ -94,6 +94,9 @@ int main()
                 for (int i = 0; i < words[index].length(); i++)
                 {
                     matrix[x + i][y] = words[index][i];
+                    x = random() % (rows - words[index].length());
+                    y = random() % (columns - words[index].length());
+                  
                     // cout << "index: " << index << " i: " << i << " x: " << x << " y: " << y << endl;
                     // cout << "matrix[" << x << "][" << y + i << "] = " << words[index][i] << endl;
                     // cout << "result: " << matrix[x][y + i] << endl;
@@ -109,7 +112,7 @@ int main()
             }
             else
             {
-              
+
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
@@ -118,7 +121,7 @@ int main()
                         {
                             // for (int p = 0; p < words[index].length(); p++)
                             //   {
-                            matrix[i + 1][j + 1] = words[index][i - 1];
+                            matrix[i][j] = words[index][i - 1];
                             // j++;
                             //    i++;
 
