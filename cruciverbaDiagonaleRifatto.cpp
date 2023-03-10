@@ -121,7 +121,7 @@ int main()
                 } // (dove inseriamo primo char della parola da inserire)
                 for (int i = 0; i < words[index].length(); i++)
                 {
-                    if (matrix[x][y + 1] != empty)
+                    if (matrix[x][y] != empty)
                     {
                         x = random() % (columns - words[index].length());
                         y = random() % rows;
@@ -133,14 +133,14 @@ int main()
                     {
                         if (i = j)
                         {
-                            for (int p = 0; p < words[index].length(); p++)
-                            {
-                                matrix[i][j] = words[index][p];
-                                j++;
-                                i++;
-                           
-                            }
-                            
+                            // for (int p = 0; p < words[index].length(); p++)
+                            //   {
+                            matrix[i + 1][j + 1] = words[index][i - 1];
+                            // j++;
+                            //    i++;
+
+                            //}
+
                             // assegnamo valore in diagionale a scendere verso dx
 
                         } // devo ancora impedire di sovrascrivere parole
