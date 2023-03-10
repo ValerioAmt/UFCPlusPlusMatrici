@@ -92,7 +92,7 @@ int main()
 
                 for (int i = 0; i < words[index].length(); i++)
                 {
-                    matrix[x + i][y] = words[index][i];
+                    matrix[x][y] = words[index][i];
                     // cout << "index: " << index << " i: " << i << " x: " << x << " y: " << y << endl;
                     // cout << "matrix[" << x << "][" << y + i << "] = " << words[index][i] << endl;
                     // cout << "result: " << matrix[x][y + i] << endl;

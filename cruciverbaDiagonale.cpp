@@ -115,7 +115,7 @@ int main()
 
                 while (matrix[x][y] != empty)
                 {
-                    x = random() % (columns - words[index].length());          //controlliamo se le posizioni sono libere per inserire parola
+                    x = random() % (columns - words[index].length()); // controlliamo se le posizioni sono libere per inserire parola
                     y = random() % (rows - words[index].length());
 
                 } // (dove inseriamo primo char della parola da inserire)
@@ -133,8 +133,15 @@ int main()
                     {
                         if (i = j)
                         {
-                            matrix[i][j] = words[index][i]; // assegnamo valore in diagionale a scendere verso dx
-                        }                                   // devo ancora impedire di sovrascrivere parole
+                            for (int p = 0; p < words[index].length(); p++)
+                            {
+                                matrix[i][j] = words[index][p];
+                                j++;
+                                i++;
+                            }
+                            // assegnamo valore in diagionale a scendere verso dx
+
+                        } // devo ancora impedire di sovrascrivere parole
                     }
                 }
                 // cout << "diagonale" << endl;
