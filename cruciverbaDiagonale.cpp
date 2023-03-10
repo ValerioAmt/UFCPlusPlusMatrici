@@ -110,14 +110,19 @@ int main()
             else
             {
                 contatore++;
-                int x = random() % (rows - words[index].length());
-                int y = x;
+                int x = random() % (rows - words[index].length());             // troviamo posizione in cui INIZIARE a scrivere parola
+                int y = (x+1) + (y+1);  
+
+                while(matrix[x][y] != empty){
+                x = (x+1) + (y+1);
+                y = random() % (rows - words[index].length());
+                }                                                             // (dove inseriamo primo char della parola da inserire)
 
                 for (int i = 0; i < rows; i++)
                 {
-                    for (int y = 0; y < columns; y++)
+                    for (int j = 0; j < columns; j++)
                     {
-                        if (i = y)
+                        if (i = j)
                         {
                             matrix[x][y] = words[index][i]; // assegnamo valore in diagionale a scendere verso dx
                         }                                   // devo ancora impedire di sovrascrivere parole
