@@ -109,24 +109,7 @@ int main()
             }
             else
             {
-                contatore++;
-                int x = random() % rows; // troviamo posizione in cui INIZIARE a scrivere parola
-                int y = random() % (columns - words[index].length());
-
-                while (matrix[x][y] != empty)
-                {
-                    x = random() % (columns - words[index].length()); // controlliamo se le posizioni sono libere per inserire parola
-                    y = random() % (rows - words[index].length());
-
-                } // (dove inseriamo primo char della parola da inserire)
-                for (int i = 0; i < words[index].length(); i++)
-                {
-                    if (matrix[x][y] != empty)
-                    {
-                        x = random() % (columns - words[index].length());
-                        y = random() % rows;
-                    }
-                }
+              
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
