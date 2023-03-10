@@ -1,6 +1,5 @@
 //
-// Created by Guea on 09/03/23.
-//
+// 
 
 #include <iostream>
 #include <string>
