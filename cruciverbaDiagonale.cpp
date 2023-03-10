@@ -115,7 +115,7 @@ int main()
 
                 while (matrix[x][y] != empty)
                 {
-                    x = random() % (columns - words[index].length());
+                    x = random() % (columns - words[index].length());          //controlliamo se le posizioni sono libere per inserire parola
                     y = random() % (rows - words[index].length());
 
                 } // (dove inseriamo primo char della parola da inserire)
@@ -133,7 +133,7 @@ int main()
                     {
                         if (i = j)
                         {
-                            matrix[x][y] = words[index][i]; // assegnamo valore in diagionale a scendere verso dx
+                            matrix[i][j] = words[index][i]; // assegnamo valore in diagionale a scendere verso dx
                         }                                   // devo ancora impedire di sovrascrivere parole
                     }
                 }
